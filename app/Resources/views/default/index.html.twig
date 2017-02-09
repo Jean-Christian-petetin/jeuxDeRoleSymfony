@@ -4,12 +4,16 @@
     <button type="button">START</button>
     
     <div>
-        <form id="selection">
-            <input type="text" placeholder="email"/>
-            <input type="text" placeholder="email"/>
-            <input type="text" placeholder="email"/>
-            <input type="text" placeholder="email"/>
+        <form id="selection" methode="POST" action="{{ path('addPlayers')}}">
+            <input type="text" name="j1" placeholder="email"/>
+            <input type="text" name="j2" placeholder="email"/>
+            <input type="text" name="j3" placeholder="email"/>
+            <input type="text" name="j4" placeholder="email"/>
             <input type="submit" value="Validez"/>
         </form>
     </div>
 {% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            <script type="text/javascript" src="./script/script.js"></script>
+        {% endblock %}

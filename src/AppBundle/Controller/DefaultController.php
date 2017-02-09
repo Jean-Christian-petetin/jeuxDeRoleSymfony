@@ -18,4 +18,13 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
+    
+    /**
+     * @Route("/personnage/create", name="createPerso")
+     */
+    public function creationPersonnage(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/creationPersonnage.html.twig');
+    }
 }

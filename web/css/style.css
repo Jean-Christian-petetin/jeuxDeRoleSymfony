@@ -1,0 +1,60 @@
+body{
+    visibility: hidden;
+}
+
+button{
+    position: relative;
+    border-radius: 0;
+    background-color: blueviolet;
+    width: 250px;
+    height: 80px;
+    line-height: 75px;
+    vertical-align: middle;
+    font-size: 3em;
+}
+
+#selection{
+    display: none;
+    position: relative;
+    width: 300px;
+    padding: 20px;
+}
+
+#selection > input{
+    width: 100%;
+    background-color: darkmagenta;
+}
+
+#selection > input[type='text']{
+    background-color: darkorchid;
+    margin-bottom: 10px;
+    border: 0px;
+    border-bottom: 2px solid violet;
+}
+
+#selection > input[type='text']:hover{
+    background-color: darkblue;
+    border-bottom: 2px solid aqua;
+}
+
+#selection > input[type='text']:focus{
+    background-color: blue;
+    border-bottom: 2px solid aqua;
+}
+
+#selection > input[type='submit']{
+    background-color: darkviolet;
+    margin: 10px 0 5px 0;
+    border: 0px;
+    border-bottom: 2px solid violet;
+}
+
+#selection > input[type='submit']:hover{
+    background-color: orchid;
+    border: 2px solid black;
+}
+/* 
+    Created on : 9 févr. 2017, 13:57:06
+    Author     : jeanchristian-petetin
+*/
+

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use stdClass;
 
 /**
  * Personnage
@@ -29,25 +30,25 @@ class Personnage
     private $nom;
 
     /**
-     * @var \stdClass
+     * @var stdClass
      *
-     * @ORM\OneToOne(targetEntity="Stats")
+     * @ORM\ManyToOne(targetEntity="Stats")
      * @ORM\JoinColumn(name="fk_stats", referencedColumnName="id")
      */
     private $stats;
 
     /**
-     * @var \stdClass
+     * @var stdClass
      *
-     * @ORM\OneToOne(targetEntity="Race")
+     * @ORM\ManyToOne(targetEntity="Race")
      * @ORM\JoinColumn(name="fk_race", referencedColumnName="id")
      */
     private $race;
 
     /**
-     * @var \stdClass
+     * @var stdClass
      *
-     * @ORM\OneToOne(targetEntity="Classe")
+     * @ORM\ManyToOne(targetEntity="Classe")
      * @ORM\JoinColumn(name="fk_classe", referencedColumnName="id")
      */
     private $classe;
@@ -102,7 +103,7 @@ class Personnage
     /**
      * Set stats
      *
-     * @param \stdClass $stats
+     * @param stdClass $stats
      *
      * @return Personnage
      */
@@ -116,7 +117,7 @@ class Personnage
     /**
      * Get stats
      *
-     * @return \stdClass
+     * @return stdClass
      */
     public function getStats()
     {
@@ -126,7 +127,7 @@ class Personnage
     /**
      * Set race
      *
-     * @param \stdClass $race
+     * @param stdClass $race
      *
      * @return Personnage
      */
@@ -140,7 +141,7 @@ class Personnage
     /**
      * Get race
      *
-     * @return \stdClass
+     * @return stdClass
      */
     public function getRace()
     {
@@ -150,7 +151,7 @@ class Personnage
     /**
      * Set classe
      *
-     * @param \stdClass $classe
+     * @param stdClass $classe
      *
      * @return Personnage
      */
@@ -164,7 +165,7 @@ class Personnage
     /**
      * Get classe
      *
-     * @return \stdClass
+     * @return stdClass
      */
     public function getClasse()
     {
@@ -195,7 +196,7 @@ class Personnage
     /**
      * Attaque le personnage ciblé en parametre.
      * 
-     * @param \AppBundle\Entity\Personnage $cible
+     * @param Personnage $cible
      */
     public function attaquer(Personnage $cible) {
         
@@ -218,5 +219,19 @@ class Personnage
     public function paul() {
         var_dump("Bravo, vous etes Paul!");       
     }
+    
+    function __construct() {
+        $this->pa = 2;
+    }
+    
+    public function majStats(){
+        $this->stats = new Stats();
+        $this->stats->setPv($this->race->getStats()->getPv() + $this->classe->getStats()->getPv());
+        $this->stats->setAtt($this->race->getStats()->getAtt() + $this->classe->getStats()->getAtt());
+        $this->stats->setMov($this->race->getStats()->getMov() + $this->classe->getStats()->getMov());
+        $this->stats->setDef($this->race->getStats()->getDef() + $this->classe->getStats()->getDef());
+        return $this->stats;
+    }
+
 }
 
